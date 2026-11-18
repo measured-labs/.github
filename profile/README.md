@@ -20,7 +20,7 @@
 | 저장소 | 묻는 것 | 상태 | 성격 | 핵심 결론 |
 |---|---|---|---|---|
 | [seat-reservation-lab](https://github.com/measured-labs/seat-reservation-lab) | 좌석 1만 석에 20만 명이 몰리면 좌석 예약의 정합성을 어떻게 지키나? | 진행 중 | 측정 실험 | 결제 시작 시 홀드를 연장하고 결제 마감 시각을 두자 결제하고도 좌석을 잃는 사용자가 11.09%에서 0이 됐다. |
-| [payment-consistency-lab](https://github.com/measured-labs/payment-consistency-lab) (비공개) | 중복 요청, 부분 실패, PG 응답 유실이 생기면 우리 기록과 PG 기록이 맞나? | 진행 중 | 측정 실험 | 베이스라인에서 mock PG 지연 2초, 동시 30건이면 DB 커넥션 10개가 모두 PG를 기다려 응답 p50이 5.4초였다. |
+| [payment-consistency-lab](https://github.com/measured-labs/payment-consistency-lab) | 중복 요청, 부분 실패, PG 응답 유실이 생기면 우리 기록과 PG 기록이 맞나? | 진행 중 | 측정 실험 | 베이스라인에서 mock PG 지연 2초, 동시 30건이면 DB 커넥션 10개가 모두 PG를 기다려 응답 p50이 5.4초였다. |
 | [order-saga-lab](https://github.com/measured-labs/order-saga-lab) | 재고는 차감됐는데 쿠폰이나 결제가 실패하면 주문을 어떻게 되돌리나? | 예정 | 측정 실험 | 해당 없음 |
 | [ledger-lab](https://github.com/measured-labs/ledger-lab) | 잔액 1,000P에 1,000P 사용 요청이 동시에 두 번 오면? | 진행 중 | 측정 실험 | 베이스라인에서 동시 사용 2건을 100회 보내자 100회 모두 둘 다 성공해 1,000P로 2,000P를 썼다. |
 | [auction-lab](https://github.com/measured-labs/auction-lab) | 마감 1초 전에 같은 금액 입찰이 동시에 들어오면? | 예정 | 측정 실험 | 해당 없음 |
