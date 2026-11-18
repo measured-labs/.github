@@ -21,13 +21,13 @@
 |---|---|---|---|---|
 | [seat-reservation-lab](https://github.com/measured-labs/seat-reservation-lab) | 좌석 1만 석에 20만 명이 몰리면 좌석 예약의 정합성을 어떻게 지키나? | 진행 중 | 측정 실험 | 결제 시작 시 홀드를 연장하고 결제 마감 시각을 두자 결제하고도 좌석을 잃는 사용자가 11.09%에서 0이 됐다. |
 | [payment-consistency-lab](https://github.com/measured-labs/payment-consistency-lab) (비공개) | 중복 요청, 부분 실패, PG 응답 유실이 생기면 우리 기록과 PG 기록이 맞나? | 진행 중 | 측정 실험 | 베이스라인에서 mock PG 지연 2초, 동시 30건이면 DB 커넥션 10개가 모두 PG를 기다려 응답 p50이 5.4초였다. |
-| [order-saga-lab](https://github.com/measured-labs/order-saga-lab) (비공개) | 재고는 차감됐는데 쿠폰이나 결제가 실패하면 주문을 어떻게 되돌리나? | 예정 | 측정 실험 | 해당 없음 |
-| [ledger-lab](https://github.com/measured-labs/ledger-lab) (비공개) | 잔액 1,000P에 1,000P 사용 요청이 동시에 두 번 오면? | 진행 중 | 측정 실험 | 베이스라인에서 동시 사용 2건을 100회 보내자 100회 모두 둘 다 성공해 1,000P로 2,000P를 썼다. |
-| [auction-lab](https://github.com/measured-labs/auction-lab) (비공개) | 마감 1초 전에 같은 금액 입찰이 동시에 들어오면? | 예정 | 측정 실험 | 해당 없음 |
-| [notification-lab](https://github.com/measured-labs/notification-lab) (비공개) | 같은 알림이 두 번 나가거나 발송사가 429를 돌려주면 어떻게 하나? | 진행 중 | 측정 실험 | 해당 없음 |
-| [cache-consistency-lab](https://github.com/measured-labs/cache-consistency-lab) (비공개) | DB는 바뀌었는데 캐시에 옛 값이 남으면 몇 ms까지 허용할까? | 예정 | 측정 실험 | 해당 없음 |
-| [integration-concert-ticketing](https://github.com/measured-labs/integration-concert-ticketing) (비공개) | 좌석, 주문, 결제, 알림 랩을 하나의 예매 흐름으로 합치면 타임아웃 연쇄와 재시도 증폭이 생기나? | 예정 | 측정 실험 | 해당 없음 |
-| [integration-auction-to-order](https://github.com/measured-labs/integration-auction-to-order) (비공개) | 경매 마감 순간의 입찰 폭주가 알림, 주문, 결제로 번지면? | 예정 | 측정 실험 | 해당 없음 |
+| [order-saga-lab](https://github.com/measured-labs/order-saga-lab) | 재고는 차감됐는데 쿠폰이나 결제가 실패하면 주문을 어떻게 되돌리나? | 예정 | 측정 실험 | 해당 없음 |
+| [ledger-lab](https://github.com/measured-labs/ledger-lab) | 잔액 1,000P에 1,000P 사용 요청이 동시에 두 번 오면? | 진행 중 | 측정 실험 | 베이스라인에서 동시 사용 2건을 100회 보내자 100회 모두 둘 다 성공해 1,000P로 2,000P를 썼다. |
+| [auction-lab](https://github.com/measured-labs/auction-lab) | 마감 1초 전에 같은 금액 입찰이 동시에 들어오면? | 예정 | 측정 실험 | 해당 없음 |
+| [notification-lab](https://github.com/measured-labs/notification-lab) | 같은 알림이 두 번 나가거나 발송사가 429를 돌려주면 어떻게 하나? | 진행 중 | 측정 실험 | 해당 없음 |
+| [cache-consistency-lab](https://github.com/measured-labs/cache-consistency-lab) | DB는 바뀌었는데 캐시에 옛 값이 남으면 몇 ms까지 허용할까? | 예정 | 측정 실험 | 해당 없음 |
+| [integration-concert-ticketing](https://github.com/measured-labs/integration-concert-ticketing) | 좌석, 주문, 결제, 알림 랩을 하나의 예매 흐름으로 합치면 타임아웃 연쇄와 재시도 증폭이 생기나? | 예정 | 측정 실험 | 해당 없음 |
+| [integration-auction-to-order](https://github.com/measured-labs/integration-auction-to-order) | 경매 마감 순간의 입찰 폭주가 알림, 주문, 결제로 번지면? | 예정 | 측정 실험 | 해당 없음 |
 
 ## backend-labs-tenancy: 멀티테넌시와 인증, 인가
 
@@ -35,14 +35,14 @@
 
 | 저장소 | 묻는 것 | 상태 | 성격 | 핵심 결론 |
 |---|---|---|---|---|
-| [tenant-isolation-lab](https://github.com/measured-labs/tenant-isolation-lab) (비공개) | 개발자가 `WHERE tenant_id`를 빠뜨리면 다른 테넌트 데이터가 보이나? | 예정 | 측정 실험 | 해당 없음 |
-| [noisy-neighbor-lab](https://github.com/measured-labs/noisy-neighbor-lab) (비공개) | 한 테넌트가 50배로 폭주하면 나머지 테넌트의 p99는 얼마나 나빠지나? | 예정 | 측정 실험 | 해당 없음 |
-| [tenant-provisioning-migration-lab](https://github.com/measured-labs/tenant-provisioning-migration-lab) (비공개) | 스키마 1,000개 마이그레이션이 500번째 테넌트에서 실패하면 롤백할까, 계속 진행할까? | 예정 | 측정 실험 | 해당 없음 |
-| [tenant-aware-cache-search-lab](https://github.com/measured-labs/tenant-aware-cache-search-lab) (비공개) | 캐시 키에 `tenant_id`가 빠지면 다른 테넌트의 응답이 나가나? | 예정 | 측정 실험 | 해당 없음 |
-| [token-lifecycle-lab](https://github.com/measured-labs/token-lifecycle-lab) (비공개) | 로그아웃한 사용자의 JWT가 만료 전까지 계속 쓰이면? | 예정 | 측정 실험 | 해당 없음 |
-| [authorization-model-lab](https://github.com/measured-labs/authorization-model-lab) (비공개) | 팀, 폴더, 문서 공유 도메인에는 RBAC, ABAC, ReBAC 중 무엇이 맞나? | 예정 | 측정 실험 | 해당 없음 |
-| [cross-tenant-authz-lab](https://github.com/measured-labs/cross-tenant-authz-lab) (비공개) | 다른 테넌트의 주문 ID를 넣으면 조회, 수정, 삭제가 되나? | 예정 | 측정 실험 | 해당 없음 |
-| [sso-service-auth-lab](https://github.com/measured-labs/sso-service-auth-lab) (비공개) | 한 테넌트의 외부 IdP가 죽으면 다른 테넌트의 로그인은 괜찮나? | 예정 | 측정 실험 | 해당 없음 |
+| [tenant-isolation-lab](https://github.com/measured-labs/tenant-isolation-lab) | 개발자가 `WHERE tenant_id`를 빠뜨리면 다른 테넌트 데이터가 보이나? | 예정 | 측정 실험 | 해당 없음 |
+| [noisy-neighbor-lab](https://github.com/measured-labs/noisy-neighbor-lab) | 한 테넌트가 50배로 폭주하면 나머지 테넌트의 p99는 얼마나 나빠지나? | 예정 | 측정 실험 | 해당 없음 |
+| [tenant-provisioning-migration-lab](https://github.com/measured-labs/tenant-provisioning-migration-lab) | 스키마 1,000개 마이그레이션이 500번째 테넌트에서 실패하면 롤백할까, 계속 진행할까? | 예정 | 측정 실험 | 해당 없음 |
+| [tenant-aware-cache-search-lab](https://github.com/measured-labs/tenant-aware-cache-search-lab) | 캐시 키에 `tenant_id`가 빠지면 다른 테넌트의 응답이 나가나? | 예정 | 측정 실험 | 해당 없음 |
+| [token-lifecycle-lab](https://github.com/measured-labs/token-lifecycle-lab) | 로그아웃한 사용자의 JWT가 만료 전까지 계속 쓰이면? | 예정 | 측정 실험 | 해당 없음 |
+| [authorization-model-lab](https://github.com/measured-labs/authorization-model-lab) | 팀, 폴더, 문서 공유 도메인에는 RBAC, ABAC, ReBAC 중 무엇이 맞나? | 예정 | 측정 실험 | 해당 없음 |
+| [cross-tenant-authz-lab](https://github.com/measured-labs/cross-tenant-authz-lab) | 다른 테넌트의 주문 ID를 넣으면 조회, 수정, 삭제가 되나? | 예정 | 측정 실험 | 해당 없음 |
+| [sso-service-auth-lab](https://github.com/measured-labs/sso-service-auth-lab) | 한 테넌트의 외부 IdP가 죽으면 다른 테넌트의 로그인은 괜찮나? | 예정 | 측정 실험 | 해당 없음 |
 | [gatekeeper-iam-lab](https://github.com/measured-labs/gatekeeper-iam-lab) | 인증, 신원 관리, JSON 정책 평가를 갖춘 IAM 서버를 직접 만들면 어떻게 동작하나? | 예정 | 학습 실험 | 해당 없음 |
 
 ## concurrency-labs: 동시성 모델과 스레드
@@ -57,7 +57,7 @@
 | [cluster-fanout-lab](https://github.com/measured-labs/cluster-fanout-lab) | 데이터를 나눠 병렬 처리하고 합치는(fan-out/fan-in) 구조는 어디서 비용이 생기나? | 예정 | 학습 실험 | 해당 없음 |
 | [process-thread-lab](https://github.com/measured-labs/process-thread-lab) | 프로세스와 스레드(플랫폼, 가상)는 생성, 전환, 메모리에서 어떻게 다른가? | 확인 필요 | 학습 실험 | 해당 없음 |
 | [lost-exception-lab](https://github.com/measured-labs/lost-exception-lab) | 스레드와 프로세스 경계를 넘은 예외는 어디로 사라지나? | 예정 | 학습 실험 | 해당 없음 |
-| [deadlock-lab](https://github.com/measured-labs/deadlock-lab) (비공개) | 대표적인 데드락 4가지를 재현하고 탐지, 해결하면 무엇이 달라지나? | 확인 필요 | 학습 실험 | 해당 없음 |
+| [deadlock-lab](https://github.com/measured-labs/deadlock-lab) | 대표적인 데드락 4가지를 재현하고 탐지, 해결하면 무엇이 달라지나? | 확인 필요 | 학습 실험 | 해당 없음 |
 
 ## cache-labs: 캐시
 
@@ -76,7 +76,7 @@
 | 저장소 | 묻는 것 | 상태 | 성격 | 핵심 결론 |
 |---|---|---|---|---|
 | [index-lab](https://github.com/measured-labs/index-lab) | B+tree와 Hash 인덱스는 쿼리 패턴, 데이터 규모, 버퍼풀 크기에 따라 페이지 I/O가 얼마나 다른가? | 진행 중 | 측정 실험 | 해당 없음 |
-| [index-structure-lab](https://github.com/measured-labs/index-structure-lab) (비공개) | 조회만 보면 해시가 빠른데 왜 DB 인덱스는 트리가 기본인가? | 예정 | 학습 실험 | 해당 없음 |
+| [index-structure-lab](https://github.com/measured-labs/index-structure-lab) | 조회만 보면 해시가 빠른데 왜 DB 인덱스는 트리가 기본인가? | 예정 | 학습 실험 | 해당 없음 |
 | [acid-lab](https://github.com/measured-labs/acid-lab) | ACID를 인메모리 저장소, CSV, WAL로 직접 만들면 각 속성은 어떻게 깨지고 지켜지나? | 확인 필요 | 학습 실험 | 해당 없음 |
 | [db-engine-lab](https://github.com/measured-labs/db-engine-lab) | DB 엔진을 처음부터 만들면 저장, 인덱스, 트랜잭션, 복구가 어떻게 이어지나? | 진행 중 | 학습 실험 | 해당 없음 |
 
@@ -87,12 +87,12 @@
 | 저장소 | 묻는 것 | 상태 | 성격 | 핵심 결론 |
 |---|---|---|---|---|
 | [http-grpc-lab](https://github.com/measured-labs/http-grpc-lab) | 같은 조건에서 HTTP와 gRPC는 언제 어느 쪽이 빠른가? | 완료 | 측정 실험 | 페이로드 100KB 이하는 gRPC가 30~67% 빨랐고 200KB 이상은 HTTP 바이너리 전송이 14~60% 빨랐다. |
-| [http-keepalive-lab](https://github.com/measured-labs/http-keepalive-lab) (비공개) | Keep-Alive를 끄거나 HTTP/2, HTTP/3로 바꾸면 실제로 얼마나 달라지나? | 예정 | 측정 실험 | 해당 없음 |
-| [tcp-nagle-lab](https://github.com/measured-labs/tcp-nagle-lab) (비공개) | Nagle 알고리즘을 켜 두면 작은 응답에 지연이 얼마나 붙나? | 예정 | 측정 실험 | 해당 없음 |
-| [dns-cost-lab](https://github.com/measured-labs/dns-cost-lab) (비공개) | 서비스 간 호출에서 DNS 조회 비용을 0으로 봐도 되나? | 예정 | 측정 실험 | 해당 없음 |
-| [tcp-timewait-lab](https://github.com/measured-labs/tcp-timewait-lab) (비공개) | Keep-Alive 없이 초당 500건을 보내면 TIME_WAIT 소켓 때문에 포트가 고갈되나? | 예정 | 측정 실험 | 해당 없음 |
-| [mtu-fragmentation-lab](https://github.com/measured-labs/mtu-fragmentation-lab) (비공개) | 응답이 1,460바이트를 넘어 패킷이 둘로 나뉘면 지연이 달라지나? | 예정 | 측정 실험 | 해당 없음 |
-| [tls-handshake-lab](https://github.com/measured-labs/tls-handshake-lab) (비공개) | TLS 1.2, 1.3, 0-RTT의 핸드셰이크 비용은 실제로 얼마나 다른가? | 예정 | 측정 실험 | 해당 없음 |
+| [http-keepalive-lab](https://github.com/measured-labs/http-keepalive-lab) | Keep-Alive를 끄거나 HTTP/2, HTTP/3로 바꾸면 실제로 얼마나 달라지나? | 예정 | 측정 실험 | 해당 없음 |
+| [tcp-nagle-lab](https://github.com/measured-labs/tcp-nagle-lab) | Nagle 알고리즘을 켜 두면 작은 응답에 지연이 얼마나 붙나? | 예정 | 측정 실험 | 해당 없음 |
+| [dns-cost-lab](https://github.com/measured-labs/dns-cost-lab) | 서비스 간 호출에서 DNS 조회 비용을 0으로 봐도 되나? | 예정 | 측정 실험 | 해당 없음 |
+| [tcp-timewait-lab](https://github.com/measured-labs/tcp-timewait-lab) | Keep-Alive 없이 초당 500건을 보내면 TIME_WAIT 소켓 때문에 포트가 고갈되나? | 예정 | 측정 실험 | 해당 없음 |
+| [mtu-fragmentation-lab](https://github.com/measured-labs/mtu-fragmentation-lab) | 응답이 1,460바이트를 넘어 패킷이 둘로 나뉘면 지연이 달라지나? | 예정 | 측정 실험 | 해당 없음 |
+| [tls-handshake-lab](https://github.com/measured-labs/tls-handshake-lab) | TLS 1.2, 1.3, 0-RTT의 핸드셰이크 비용은 실제로 얼마나 다른가? | 예정 | 측정 실험 | 해당 없음 |
 
 ## orm-labs: ORM
 
