@@ -7,7 +7,7 @@
 - **완료**: 결론이나 결정이 문서에 있다.
 - **진행 중**: ADR을 쓰는 중이거나 최근 작업이 있다.
 - **예정**: 설계 문서(README 등)만 있고 실험은 아직 시작하지 않았다.
-- **확인 필요**: 코드는 있지만 결과 기록이 없어 상태를 정하지 못했다.
+- **학습 예정**: 코드는 있지만 실행 기록이 없다. 나중에 코드를 함께 읽으며 하나씩 진행한다.
 - **측정 실험**: 부하, 성능, 정합성 수치로 방식을 정한다.
 - **학습 실험**: 직접 구현하고 동작을 관찰해 원리를 배운다.
 
@@ -51,13 +51,13 @@
 
 | 저장소 | 묻는 것 | 상태 | 성격 | 핵심 결론 |
 |---|---|---|---|---|
-| [sync-async-lab](https://github.com/measured-labs/sync-async-lab) | 동기, 비동기 서버는 I/O 부하에서 처리량이 얼마나 다른가? | 완료 | 측정 실험 | 1,000 VU에서 Go 3,180, Spring WebFlux 3,161, Spring MVC 954 req/s였다. |
-| [mvc-webflux-lab](https://github.com/measured-labs/mvc-webflux-lab) | 같은 로직이면 Spring MVC와 WebFlux는 얼마나 다른가? | 완료 | 측정 실험 | 100 VU, 10분 부하에서 MVC가 132.66 대 126.84 req/s, p95 10.37 대 105.51ms로 앞섰다. |
+| [sync-async-lab](https://github.com/measured-labs/sync-async-lab) | 동기, 비동기 서버는 I/O 부하에서 처리량이 얼마나 다른가? | 완료 | 측정 실험 | 500→1000 VU 단계 부하 평균에서 Go 3,180, WebFlux 3,161, 가상 스레드 2,333, Spring MVC 954 req/s였다(실패 0). |
+| [mvc-webflux-lab](https://github.com/measured-labs/mvc-webflux-lab) | 동시에 기다리는 요청이 스레드 풀보다 많아지면 MVC(일반 · 가상 스레드)와 WebFlux는 얼마나 다른가? | 완료 | 측정 실험 | 100ms 대기 · 1600 VU에서 일반 스레드 1,999(약 2,000에서 정체), 가상 스레드 10,876, WebFlux 15,002 req/s였다. |
 | [thread-scheduling-lab](https://github.com/measured-labs/thread-scheduling-lab) | 주기 작업을 sleep 루프와 ScheduledExecutorService로 돌리면 간격이 얼마나 다른가? | 완료 | 측정 실험 | 50ms 간격에서 sleep 루프는 간격이 0.8ms씩 밀렸고 ScheduledExecutorService는 밀리지 않았다. |
 | [cluster-fanout-lab](https://github.com/measured-labs/cluster-fanout-lab) | 데이터를 나눠 병렬 처리하고 합치는(fan-out/fan-in) 구조는 어디서 비용이 생기나? | 예정 | 학습 실험 | 해당 없음 |
-| [process-thread-lab](https://github.com/measured-labs/process-thread-lab) | 프로세스와 스레드(플랫폼, 가상)는 생성, 전환, 메모리에서 어떻게 다른가? | 확인 필요 | 학습 실험 | 해당 없음 |
+| [process-thread-lab](https://github.com/measured-labs/process-thread-lab) | 프로세스와 스레드(플랫폼, 가상)는 생성, 전환, 메모리에서 어떻게 다른가? | 학습 예정 | 학습 실험 | 해당 없음 |
 | [lost-exception-lab](https://github.com/measured-labs/lost-exception-lab) | 스레드와 프로세스 경계를 넘은 예외는 어디로 사라지나? | 예정 | 학습 실험 | 해당 없음 |
-| [deadlock-lab](https://github.com/measured-labs/deadlock-lab) | 대표적인 데드락 4가지를 재현하고 탐지, 해결하면 무엇이 달라지나? | 확인 필요 | 학습 실험 | 해당 없음 |
+| [deadlock-lab](https://github.com/measured-labs/deadlock-lab) | 대표적인 데드락 4가지를 재현하고 탐지, 해결하면 무엇이 달라지나? | 학습 예정 | 학습 실험 | 해당 없음 |
 
 ## cache-labs: 캐시
 
@@ -67,7 +67,7 @@
 |---|---|---|---|---|
 | [cache-split-lab](https://github.com/measured-labs/cache-split-lab) | 캐시를 가진 서버를 같은 자원으로 두 대로 나누면 히트율과 지연은 어떻게 되나? | 완료 | 측정 실험 | 균등 접근에서는 라운드로빈 두 대가 히트율 50.01%p를 잃고 6.4배 느렸지만, 접근이 쏠리면 키 해시 분배 쪽이 100% 부하부터 p50 16에서 95ms로 늘었다. |
 | [spring-cache-lab](https://github.com/measured-labs/spring-cache-lab) | Caffeine, Redis, 2단 캐시는 캐시가 없을 때보다 얼마나 빠른가? | 완료 | 측정 실험 | p95가 캐시 없음 53.15ms에서 2단 캐시 2.06ms, Caffeine 3.11ms, Redis 4.95ms로 줄었다. |
-| [redis-atomicity-lab](https://github.com/measured-labs/redis-atomicity-lab) | 여러 서버가 Redis 값을 GET 후 SET 하면 갱신이 사라지나, Lua 스크립트로 막히나? | 확인 필요 | 측정 실험 | 해당 없음 |
+| [redis-atomicity-lab](https://github.com/measured-labs/redis-atomicity-lab) | 여러 서버가 Redis 값을 GET 후 SET 하면 갱신이 사라지나, Lua 스크립트로 막히나? | 학습 예정 | 측정 실험 | 해당 없음 |
 
 ## storage-labs: 스토리지와 DB 엔진
 
@@ -77,8 +77,8 @@
 |---|---|---|---|---|
 | [index-lab](https://github.com/measured-labs/index-lab) | B+tree와 Hash 인덱스는 쿼리 패턴, 데이터 규모, 버퍼풀 크기에 따라 페이지 I/O가 얼마나 다른가? | 진행 중 | 측정 실험 | 해당 없음 |
 | [index-structure-lab](https://github.com/measured-labs/index-structure-lab) | 조회만 보면 해시가 빠른데 왜 DB 인덱스는 트리가 기본인가? | 예정 | 학습 실험 | 해당 없음 |
-| [acid-lab](https://github.com/measured-labs/acid-lab) | ACID를 인메모리 저장소, CSV, WAL로 직접 만들면 각 속성은 어떻게 깨지고 지켜지나? | 확인 필요 | 학습 실험 | 해당 없음 |
-| [db-engine-lab](https://github.com/measured-labs/db-engine-lab) | DB 엔진을 처음부터 만들면 저장, 인덱스, 트랜잭션, 복구가 어떻게 이어지나? | 진행 중 | 학습 실험 | 해당 없음 |
+| [acid-lab](https://github.com/measured-labs/acid-lab) | ACID를 인메모리 저장소, CSV, WAL로 직접 만들면 각 속성은 어떻게 깨지고 지켜지나? | 학습 예정 | 학습 실험 | 해당 없음 |
+| [db-engine-lab](https://github.com/measured-labs/db-engine-lab) | DB 엔진을 처음부터 만들면 저장, 인덱스, 트랜잭션, 복구가 어떻게 이어지나? | 학습 예정 | 학습 실험 | 해당 없음 |
 
 ## network-labs: 네트워크와 프로토콜
 
@@ -142,4 +142,4 @@ ORM이 막아 준다고 알려진 것을 실제 버전에서 재현해 확인하
 - 결정은 저장소마다 `docs/adr/`에 ADR로 남긴다. ADR에는 질문, 가설, 미리 정한 합격 기준, 선택지별 측정값, 결정을 적는다.
 - 작업 기록(요구사항 명세, 작업 로그)은 `docs/plans/<날짜>/<작업명>/`에, 다음 작업 후보는 `docs/plans/NEXT.md`에 둔다. 이 방식보다 먼저 만든 저장소는 결과를 README에 정리했다.
 
-마지막 갱신: 2026-11-18
+마지막 갱신: 2026-11-19
